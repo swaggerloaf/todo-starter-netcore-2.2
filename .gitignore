@@ -1,3 +1,11 @@
+# Csharp
+
+obj
+bin
+.vscode
+
+
+
 # Logs
 logs
 *.log
