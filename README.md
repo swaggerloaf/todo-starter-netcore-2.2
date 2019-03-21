@@ -2,6 +2,7 @@
 
 Todo starter app for .NET Core 2.2 using sqlite 3 database
 
+<code>dotnet aspnet-codegenerator</code>
 <code>dotnet ef migrations add InitialCreate</code>
 <code>dotnet ef database update</code>
 <code>sqlite3 todos.db</code>

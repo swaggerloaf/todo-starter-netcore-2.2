@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using todo_starter_netcore_2.Data;
 
 namespace todo_starter_netcore_2.Controllers
 {
@@ -11,9 +13,13 @@ namespace todo_starter_netcore_2.Controllers
   public class TodosController : ControllerBase
   {
     // GET api/values
-    public object Get()
+    [HttpGet]
+    public async Task<IActionResult> GetTodos()
     {
-      return new { bra = "value1", ska = "value2" };
+      TodoContext context = new TodoContext();
+
+      var todos = context.Todos;
+      return Ok(await todos.ToArrayAsync());
     }
 
     // GET api/values/5
