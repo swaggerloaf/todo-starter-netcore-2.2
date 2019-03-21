@@ -8,13 +8,12 @@ namespace todo_starter_netcore_2.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class ValuesController : ControllerBase
+  public class TodosController : ControllerBase
   {
     // GET api/values
-    [HttpGet]
-    public ActionResult<IEnumerable<string>> Get()
+    public object Get()
     {
-      return new string[] { "value1", "value2" };
+      return new { bra = "value1", ska = "value2" };
     }
 
     // GET api/values/5
