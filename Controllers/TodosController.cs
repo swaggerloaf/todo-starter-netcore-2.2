@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using todo_starter_netcore_2.Data;
@@ -16,10 +17,18 @@ namespace todo_starter_netcore_2.Controllers
     [HttpGet]
     public async Task<IActionResult> GetTodos()
     {
-      TodoContext context = new TodoContext();
 
-      var todos = context.Todos;
-      return Ok(await todos.ToArrayAsync());
+      try
+      {
+        TodoContext context = new TodoContext();
+
+        var todos = await context.Todos.ToArrayAsync();
+        return Ok(todos);
+      }
+      catch (Exception)
+      {
+        return this.StatusCode(StatusCodes.Status500InternalServerError);
+      }
     }
 
     // GET api/values/5
