@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 
 namespace todo_starter_netcore_2.Data.Entities
 {
@@ -11,7 +11,8 @@ namespace todo_starter_netcore_2.Data.Entities
   public class Todo
   {
     public int Id { get; set; }
-    public int? UserId { get; set; }
+    public User User { get; set; }
+    public List<Task> Tasks { get; set; }
     public string Text { get; set; }
     public DateTime DueDate { get; set; }
 
