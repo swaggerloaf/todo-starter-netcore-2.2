@@ -10,7 +10,7 @@ namespace todo_starter_netcore_2.Data
 {
   public class EmployeeDataAccessLayer
   {
-    string connectionString = "Server=tcp:frodo2.database.windows.net,1433;Initial Catalog=Frodo;Persist Security Info=False;User ID=swaggerloaf;Password=Aun1Bli$$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+    string connectionString = "{conn string}";
 
     //To View all employees details    
     public IEnumerable<Employee> GetAllEmployees()
