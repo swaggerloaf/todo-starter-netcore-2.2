@@ -11,7 +11,7 @@ namespace todo_starter_netcore_2.Data
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      optionsBuilder.UseSqlite("Data Source=todos.db");
+      optionsBuilder.UseSqlite("Data Source=todos.db;Version=3;");
     }
   }
 }
