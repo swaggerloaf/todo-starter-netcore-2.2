@@ -9,6 +9,7 @@ namespace todo_starter_netcore_2.Data
     public DbSet<Todo> Todos { get; set; }
     public DbSet<Todo> Tasks { get; set; }
     public DbSet<User> TodoUsers { get; set; }
+    public DbSet<TodoAppUser> TodoAppUsers { get; set; }
 
     public TodoContext(DbContextOptions<TodoContext> options)
         : base(options)
@@ -17,7 +18,7 @@ namespace todo_starter_netcore_2.Data
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      optionsBuilder.UseSqlite("Data Source=todos.db;Version=3;");
+      optionsBuilder.UseSqlite("Data Source=todos.db;");
     }
   }
 }

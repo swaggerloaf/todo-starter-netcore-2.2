@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using todo_starter_netcore_2.Data;
+using todo_starter_netcore_2.Data.Entities;
 
 namespace todo_starter_netcore_2
 {
@@ -35,8 +38,14 @@ namespace todo_starter_netcore_2
         });
 
       services.AddDbContext<TodoContext>();
-      services.AddDefaultIdentity<TodoUser>()
+      services.AddIdentity<TodoAppUser, IdentityRole>()
           .AddEntityFrameworkStores<TodoContext>();
+
+      services.AddAuthentication(defaultScheme: "Cookies")
+        .AddCookie("Cookies", option =>
+        {
+
+        });
       //services.AddSingleton<EmployeeDataAccessLayer>();
       services.AddAutoMapper();
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -56,6 +65,8 @@ namespace todo_starter_netcore_2
       }
 
       app.UseHttpsRedirection();
+
+      app.UseIdentity();
       app.UseMvc();
     }
   }
